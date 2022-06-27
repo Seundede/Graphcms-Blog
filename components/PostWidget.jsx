@@ -14,7 +14,7 @@ const PostWidget = ({ categories, slug }) => {
       getRecentPost().then((result) => setRelatedPosts(result));
     }
   }, [slug, categories]);
-  console.log(relatedPosts);
+
   return (
     <div className="shadow-lg rounded-lg p-8 mb-8">
       <h3 className="text-xl mb-8 font-semibold borber-b pb-4">

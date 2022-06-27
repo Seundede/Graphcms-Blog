@@ -1,10 +1,12 @@
 import Link from "next/link";
-import React from "react";
-const categories = [
-  { name: "jsjos", slug: "hhshsci" },
-  { name: "jsjoshahaks", slug: "hhshscijskhsls" },
-];
+import React, { useState, useEffect } from "react";
+import { getCategories } from "../services";
+
 const Navbar = () => {
+    const [categories, setCategories] = useState([]);
+    useEffect(() => {
+      getCategories().then((category) => setCategories(category));
+    }, []);
   return (
     <div className="container mx-auto px-10 mb-8 ">
       <div className="w-full inline-block py-8 border-b">
