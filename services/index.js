@@ -65,7 +65,7 @@ export const getSimilarPosts = async (categories, slug) => {
         last: 3
       ) {
         title
-        featuredImage {
+        featuredimage {
           url
         }
         createdAt
@@ -99,13 +99,13 @@ export const getPostDetails = async (slug) => {
       post(where: { slug: $slug }) {
         title
         excerpt
-        featuredImage {
+        featuredimage {
           url
         }
         author {
           name
-          bio
-          photo {
+          description
+          picture {
             url
           }
         }
