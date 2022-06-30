@@ -1,4 +1,5 @@
 import moment from "moment";
+import Image from "next/image";
 import React from "react";
 
 const PostDetail = ({ post }) => {
@@ -30,7 +31,7 @@ const PostDetail = ({ post }) => {
         );
       case "paragraph":
         return (
-          <p key={index} className="mb-8">
+          <p key={index} className="mb-8 w-full text-clip">
             {modifiedText.map((item, i) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
@@ -45,39 +46,42 @@ const PostDetail = ({ post }) => {
           </h4>
         );
       case "image":
-        return {
-          /**  <img
+        return (
+          <Image
             key={index}
             alt={obj.title}
             height={obj.height}
             width={obj.width}
             src={obj.src}
-          /> */
-        };
+          />
+        );
       default:
         return modifiedText;
     }
   };
   return (
     <>
-      <div className="bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8">
-        <div className="relative overflow-hidden shadow-md mb-6">
-          {/** <img
-            src={post.featuredImage.url}
-            alt=""
-            className="object-top h-full w-full object-cover  shadow-lg rounded-t-lg lg:rounded-lg"
-          /> */}
+      <div className=" shadow-lg rounded-lg lg:p-8 pb-12 mb-8 w-full">
+        <div className="relative overflow-hidden shadow-md mb-6 w-full">
+          <Image
+            src={post.featuredimage.url}
+            alt={post.title}
+            height={400}
+            width={500}
+            className="w-full object-contain absolute h-80 rounded-t-lg lg:rounded-lg "
+          />
         </div>
-        <div className="px-4 lg:px-0">
+        <div className="px-4 lg:px-0 w-full">
           <div className="flex items-center mb-8 w-full">
-            <div className="hidden md:flex  justify-center lg:mb-0 lg:w-auto mr-8 items-center">
-              {/**<img
+            <div className="hidden md:flex justify-center lg:mb-0 lg:w-auto mr-8 items-center">
+              <Image
                 alt={post.author.name}
-                height="30px"
-                width="30px"
+                height={30}
+                width={30}
                 className="align-middle rounded-full"
-                src={post.author.photo.url}
-              /> */}
+                src={post.author.picture.url}
+              />
+
               <p className="inline align-middle text-gray-700 ml-2 font-medium text-lg">
                 {post.author.name}
               </p>

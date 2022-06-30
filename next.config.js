@@ -5,8 +5,7 @@ const nextConfig = {
 
 
 module.exports = {
-
   images: {
-    domains: ["https://media.graphassets.com"],
+    domains: ["media.graphassets.com"],
   },
 };
