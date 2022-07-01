@@ -1,6 +1,7 @@
-import React  from 'react'
+import React, { useState, useEffect}  from 'react'
 
-const Comments = () => {
+const Comments = ({ slug }) => {
+  const [comments, setComments] = useState([])
   return (
     <div>Comments</div>
   )
