@@ -12,7 +12,7 @@ const Navbar = () => {
       <div className="w-full inline-block py-8 border-b">
         <div className="md:float-left block">
           <Link href="/">
-            <span className="cursor-pointer text-4xl text-orange-500 font-bold">
+            <span className="cursor-pointer text-4xl text-orange-600 font-bold">
               Blog
             </span>
           </Link>
@@ -20,7 +20,7 @@ const Navbar = () => {
         <div className="hidden md:float-left md:contents">
           {categories.map((category, index) => (
             <Link key={index} href={`/category/${category.slug}`}>
-              <span className="md:float-right mt-2 align-middle text-orange-500 ml-4 font-semibold cursor-pointer">
+              <span className="md:float-right mt-2 align-middle text-orange-600 ml-4 font-semibold cursor-pointer">
                 {category.name}
               </span>
             </Link>

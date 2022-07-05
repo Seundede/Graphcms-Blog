@@ -1,8 +1,11 @@
 import moment from "moment";
 import Image from "next/image";
 import React from "react";
+import { MdOutlineDateRange } from "react-icons/md";
 
 const PostDetail = ({ post }) => {
+
+
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text;
 
@@ -29,6 +32,14 @@ const PostDetail = ({ post }) => {
             ))}
           </h3>
         );
+      case "heading-one":
+        return (
+          <h1 key={index} className="text-xl font-semibold mb-4">
+            {modifiedText.map((item, i) => (
+              <React.Fragment key={i}>{item}</React.Fragment>
+            ))}
+          </h1>
+        );
       case "paragraph":
         return (
           <p key={index} className="mb-8 w-full text-clip">
@@ -36,6 +47,14 @@ const PostDetail = ({ post }) => {
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
           </p>
+        );
+      case "list":
+        return (
+          <ul key={index} className="mb-8 w-full text-clip">
+            {modifiedText.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
         );
       case "heading-four":
         return (
@@ -68,7 +87,7 @@ const PostDetail = ({ post }) => {
             alt={post.title}
             height={400}
             width={500}
-            className="w-full object-contain absolute h-80 rounded-t-lg lg:rounded-lg "
+            className="w-full object-cover absolute h-80 rounded-t-lg lg:rounded-lg"
           />
         </div>
         <div className="px-4 lg:px-0 w-full">
@@ -87,20 +106,7 @@ const PostDetail = ({ post }) => {
               </p>
             </div>
             <div className="font-medium text-gray-700">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 inline mr-2 text-pink-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
+              <MdOutlineDateRange className="h-6 w-6 inline mr-2 text-orange-600" />
               <span className="align-middle">
                 {moment(post.createdAt).format("MMM DD, YYYY")}
               </span>

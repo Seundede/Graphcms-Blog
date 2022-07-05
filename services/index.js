@@ -2,6 +2,7 @@ import { request, gql } from "graphql-request";
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
+// GET POSTS
 export const getPosts = async () => {
   const query = gql`
     {
@@ -37,6 +38,7 @@ export const getPosts = async () => {
   return result.postsConnection.edges;
 };
 
+// GET RECENT POSTS
 export const getRecentPost = async () => {
   const query = gql`
     {
@@ -54,6 +56,8 @@ export const getRecentPost = async () => {
   return result.posts;
 };
 
+
+// GET SIMILAR POSTS
 export const getSimilarPosts = async (categories, slug) => {
   const query = gql`
     query GetPostDetails($slug: String!, $categories: [String!]) {
@@ -78,6 +82,7 @@ export const getSimilarPosts = async (categories, slug) => {
   return result.posts;
 };
 
+// GET CATEGORIES
 export const getCategories = async () => {
   const query = gql`
     {
@@ -93,6 +98,8 @@ export const getCategories = async () => {
   return result.categories;
 };
 
+
+// GET POST DETAILS
 export const getPostDetails = async (slug) => {
   const query = gql`
     query GetPostDetails($slug: String!) {
@@ -127,6 +134,7 @@ export const getPostDetails = async (slug) => {
   return result.post;
 };
 
+// SUBMIT COMMENT (POST REQUEST)
 export const submitComment = async (obj) => {
   const result = await fetch("/api/comments", {
     method: "POST",
@@ -137,4 +145,22 @@ export const submitComment = async (obj) => {
   });
 
   return result.json();
+};
+
+
+// GET COMMENTS
+export const getComments = async (slug) => {
+  const query = gql`
+    query GetComments($slug: String!) {
+      comments(where: { post: { slug: $slug } }) {
+        name
+        createdAt
+        comment
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query, { slug });
+
+  return result.comments;
 };
