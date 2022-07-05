@@ -15,7 +15,7 @@ const PostCard = ({ post }) => {
           className="w-full object-cover absolute h-80 rounded-t-lg lg:rounded-lg "
         />
       </div>
-      <h1 className="transition duration-100 text-center mb-8 cursor-pointer  hover:text-pink-600 text-3xl font-semibold">
+      <h1 className="transition duration-100 text-center mb-8 cursor-pointer  hover:text-orange-600 text-3xl font-semibold">
         <Link href={`/post/${post.slug}`}>{post.title}</Link>
       </h1>
       <div className="block lg:flex text-center items-center justify-center mb-8 w-full">
